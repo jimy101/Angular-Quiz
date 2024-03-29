@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    font-family: "Cairo", sans-serif;
+    --main-color: rgb(33, 189, 181);
+    --secound-color: rgb(25, 146, 140);
+}
+
+body {
+    padding: 10px 25px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100% !important;
+    height: 100% !important;
+}
