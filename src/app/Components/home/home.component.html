@@ -1,4 +1,13 @@
-<h2>Users</h2>
+<div class="heading">
+  <h2>Users</h2>
+  <input
+    class="serchInput"
+    #searchText
+    (keyup)="search(searchText.value)"
+    type="text"
+    placeholder="search By Name"
+  />
+</div>
 <span
   style="
     display: block;
@@ -9,6 +18,7 @@
 ></span>
 <!-- list of users -->
 <ul class="users-wrapper">
+  <p class="user-error" *ngIf="users.length == 0">User Not Found</p>
   <li class="user-item" *ngFor="let item of users">
     <div class="user-image">
       <img [src]="item.avatar" [alt]="item.first_name" srcset="" />

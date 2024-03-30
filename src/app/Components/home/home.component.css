@@ -1,6 +1,29 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.serchInput {
+    outline: #eee;
+    border: 1px solid var(--main-color);
+    border-radius: 12px;
+    font-size: 22px;
+    padding: 10px;
+    color: gray;
+    font-weight: 400;
+}
+
 .users-wrapper {
     margin: 20px auto;
     width: 75%;
+}
+
+.user-error {
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(198, 8, 8, 0.783);
 }
 
 .user-item {

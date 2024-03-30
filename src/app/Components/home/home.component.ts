@@ -7,18 +7,15 @@ import { CachService } from '../../../services/cach.service';
 
 @Component({
   selector: 'home',
-
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   pageNumber: number = 1;
+  allUsers: Iuser[] = [];
   users: Iuser[] = [];
   pages: number[] = [];
-  constructor(
-    private apiServ: ApiService,
-    private router: Router,
-  ) {
+  constructor(private apiServ: ApiService, private router: Router) {
     this.getDataByPage(this.pageNumber);
   }
 
@@ -26,6 +23,7 @@ export class HomeComponent {
     this.apiServ.getPageByNumber(num).subscribe({
       next: (response) => {
         console.log(response);
+        this.allUsers = response.data;
         this.users = response.data;
         this.pages = [];
         for (let i = 1; i <= response.total_pages; i++) {
@@ -47,5 +45,18 @@ export class HomeComponent {
   goToDetails(id: Number) {
     console.log(id);
     this.router.navigateByUrl(`/user/${id}`);
+  }
+  search(text: string) {
+    if (text.trim() == '') {
+      this.users = this.allUsers;
+    } else {
+      this.users = this.allUsers.filter(
+        (user) =>
+          user.first_name
+            .toLocaleLowerCase()
+            .includes(text.toLocaleLowerCase()) ||
+          user.last_name.toLocaleLowerCase().includes(text.toLocaleLowerCase())
+      );
+    }
   }
 }
